@@ -4,3 +4,5 @@
 
 ---
 Реализовать алгоритм пирамидальной сортировки (сортировка кучей).
+
+[Решение](https://github.com/psyfluid/gb02-1-8_algorithms/blob/main/src/java/gb/hw01/HeapSort.java)
