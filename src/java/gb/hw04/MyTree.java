@@ -109,6 +109,38 @@ public class MyTree<V extends Comparable<V>> {
             return find(node.right, value);
     }
 
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public String printTree() {
+        if (isEmpty()) return "Empty tree";
+        final StringBuilder sb = new StringBuilder();
+        printTree(sb, root, "", true);
+        return sb.toString();
+    }
+
+    private void printTree(StringBuilder sb, Node node, String indent, boolean last) {
+        if (node == null) return;
+        sb.append(indent);
+        if (last) {
+            sb.append("R----");
+            indent += "   ";
+        } else {
+            sb.append("L----");
+            indent += "|  ";
+        }
+
+        char col = (node.color == Color.BLACK ? 'B' : 'R');
+        sb.append(node.value).append("(").append(col).append(")").append("\n");
+        printTree(sb, node.left, indent, false);
+        printTree(sb, node.right, indent, true);
+    }
+
+    @Override
+    public String toString() {
+        return printTree();
+    }
 
     private enum Color {
         RED, BLACK
